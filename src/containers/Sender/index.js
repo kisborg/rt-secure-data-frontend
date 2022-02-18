@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getRandomString } from '../../utils/helperFunctions';
-import cryptoJs from 'crypto-js';
+import CryptoJS from 'crypto-js';
 
 const Sender = ({ socket }) => {
   const [message, setMessage] = useState('');
@@ -14,8 +14,13 @@ const Sender = ({ socket }) => {
   }, [])
 
   useEffect(() => {
-    const encryptedMessage = cryptoJs.AES.encrypt(message, secretKey, { keySize: 256 })
-    socket.emit('message', encryptedMessage.toString());
+    const encryptedMessage = CryptoJS.AES.encrypt(message, secretKey, { 
+      keySize: 256,
+      mode: CryptoJS.mode.CFB,
+      padding: CryptoJS.pad.NoPadding
+    });
+    const signature = CryptoJS.HmacSHA1(encryptedMessage.toString(), secretKey).toString(CryptoJS.enc.Hex);
+    socket.emit('message', { message: encryptedMessage.toString(), signature });
   }, [message, socket])
   return (
     <div>
