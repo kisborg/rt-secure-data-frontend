@@ -25,7 +25,7 @@ const Sender = ({ socket }) => {
   return (
     <div>
       <textarea onChange={updateText} value={message}/>
-      <input type="text" readOnly value={`http://localhost:3000/receiver/${secretKey}`} />
+      <input type="text" readOnly value={`${window.location.origin}/receiver/${secretKey}`} />
     </div>
   )
 }
