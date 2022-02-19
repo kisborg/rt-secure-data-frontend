@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getRandomString } from '../../utils/helperFunctions';
+import TextBox from '../../components/Textbox';
+import UrlField from '../../components/UrlField';
 import CryptoJS from 'crypto-js';
 
 const Sender = ({ socket }) => {
@@ -23,9 +25,9 @@ const Sender = ({ socket }) => {
     socket.emit('message', { message: encryptedMessage.toString(), signature });
   }, [message, socket])
   return (
-    <div>
-      <textarea onChange={updateText} value={message}/>
-      <input type="text" readOnly value={`${window.location.origin}/receiver/${secretKey}`} />
+    <div style={{width: '80%'}}>
+      <TextBox onChange={updateText} value={message}/>
+      <UrlField location={secretKey} />
     </div>
   )
 }

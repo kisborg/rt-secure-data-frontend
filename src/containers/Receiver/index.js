@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
+import TextBox from '../../components/Textbox';
 import { hmacSignatureIsValid } from '../../utils/helperFunctions';
 
 const Receiver = ({ socket }) => {
@@ -31,7 +32,7 @@ const Receiver = ({ socket }) => {
   }, [socket]);
   return (
     <div>
-      <textarea readOnly value={message}/>
+      <TextBox readOnly value={message}/>
     </div>
   )
 }
