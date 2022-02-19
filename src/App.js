@@ -32,7 +32,6 @@ const App = () => {
   const [socket, setSocket] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    console.log(process.env.REACT_APP_SOCKET_URL)
     const newSocket = io(process.env.REACT_APP_SOCKET_URL);
     setSocket(newSocket);
     return () => newSocket.close();

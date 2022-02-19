@@ -12,14 +12,12 @@ const Receiver = ({ socket }) => {
       if (!hmacSignatureIsValid(signature, message, secretKey)) {
         setMessage('Unauthorized');
       } else {
-        console.log(message)
         const decryptedMessage = CryptoJS.AES.decrypt(message, secretKey, {
           keySize: 256,
           mode: CryptoJS.mode.CFB,
           padding: CryptoJS.pad.NoPadding
         })
         .toString(CryptoJS.enc.Utf8);
-        console.log(decryptedMessage)
         setMessage(decryptedMessage);
       }
     };
