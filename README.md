@@ -13,7 +13,7 @@
 
 - Install dependencies with 'npm install'
 
-- Set the REACT_APP_SOCKET_URL env var to the Websocket server URL
+- Set the REACT_APP_SOCKET_URL env var to the Websocket server URL. 
   Repository for the backend server: https://github.com/kisborg/rt-secure-data-backend
 
 - Start the app with 'npm start'
