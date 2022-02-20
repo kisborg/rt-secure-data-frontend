@@ -3,7 +3,6 @@ import {
   Routes,
   useNavigate
 } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import Sender from './containers/Sender'

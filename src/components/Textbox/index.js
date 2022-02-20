@@ -17,8 +17,9 @@ const StyledTextArea = styled.textarea`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   background: rgb(39,40,34);
   color: #D0D0D0;
+  padding: 15px 20px;
 `;
 
-const TextBox = (props) => <StyledTextArea {...props} />
+const TextBox = (props) => <StyledTextArea {...props} placeholder="Type your message here..." />
 
 export default TextBox;
