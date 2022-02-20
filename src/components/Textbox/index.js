@@ -20,6 +20,6 @@ const StyledTextArea = styled.textarea`
   padding: 15px 20px;
 `;
 
-const TextBox = (props) => <StyledTextArea {...props} placeholder="Type your message here..." />
+const TextBox = (props) => <StyledTextArea {...props} />
 
 export default TextBox;

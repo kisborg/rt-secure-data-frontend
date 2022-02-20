@@ -1,15 +1,13 @@
 import {
   Route,
   Routes,
-  useNavigate
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
+import Home from './containers/Home';
 import Sender from './containers/Sender'
 import Receiver from './containers/Receiver'
-import SessionButton from './components/SessionButton';
 import styled from 'styled-components'
-
 
 import './App.css';
 
@@ -29,20 +27,16 @@ const AppContainer = styled.div`
 
 const App = () => {
   const [socket, setSocket] = useState(null);
-  const navigate = useNavigate();
   useEffect(() => {
     const newSocket = io(process.env.REACT_APP_SOCKET_URL);
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
-  const goToSender = (evt) => {
-    navigate('/sender');
-  }
   return (
     <AppContainer className="App">
       {socket ? (
       <Routes>
-        <Route path="/" element={<SessionButton onClick={goToSender}/>}/>
+        <Route path="/" element={<Home />}/>
         <Route path="/sender" element={<Sender socket={socket} />} />
         <Route exact path="/receiver/:secretKey" element={<Receiver socket={socket} />} />
       </Routes>
